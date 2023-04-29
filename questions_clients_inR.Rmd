@@ -1,0 +1,22 @@
+---
+title: "lalem"
+author: "405792763 - Leigh Anne LeMoine"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+questions <- read.csv("data/questions.csv")
+clients <- read.csv("data/clients.csv")
+df <- merge(questions, clients, by.x = "AskedByClientUno", by.y= "ClientUno")
+head(df)
+```
+
+```{r}
+tapply(df$TakenByAttorneyUno, df$StateAbbr.x, sum)
+```
+
